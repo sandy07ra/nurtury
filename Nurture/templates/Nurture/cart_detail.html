@@ -1,0 +1,23 @@
+{% extends 'Nurture/base.html'%}
+{% load static%}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="card" style="width: 18rem;">
+            <img src="{{data.item.product_image.url}}" class="card-img-top" alt="">
+            <div class="card-body">
+                <h5>{{data.item.product_name}}</h5>
+                <h5>{{data.item.selling_price}}</h5>
+                <h5>{{data.item.description}}</h5>
+                <button><a href="{% url 'order' data.id %}">BUY NOW</a></button>
+               
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock content %}

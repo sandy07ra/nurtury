@@ -1,0 +1,119 @@
+{% extends 'Nurture/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<style>
+   .heading {
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 20px;
+  }
+
+  .heading h3 {
+    position: relative;
+    display: inline-block;
+  }
+
+  .heading h3::after {
+  content: '';
+  display: block;
+  height: 3px; /* Adjust thickness as needed */
+  width: 100%;
+  background-image: linear-gradient(to right, #0cdf2f, transparent);
+}
+.card {
+    border: 2px solid lightgrey;
+    width: 285px; /* Fixed width for all cards */
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card-img-top {
+    height: 250px; /* Adjust as needed */
+    object-fit: cover;
+  }
+
+  .card-body {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .card-title {
+    font-size: 1rem;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .carousel-inner img {
+    width: 100%;
+    height: 500px; /* Fixed height for carousel images */
+    object-fit: cover; /* Ensures the image covers the element */
+  }
+
+</style>
+
+<!-- Carousel-slides -->
+
+<div id="carouselExampleIndicators" class="carousel slide" style="margin-top: 20px;">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+      aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+      aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+      aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="{% static 'images/carou-2.png' %}" class="d-block w-100 " alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'images/carou-5.jpg' %}" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'images/carou-3.jpg' %}" class="d-block w-100" alt="...">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+<!-- All categories -->
+
+<div class="heading " style="margin-top: 50px;">
+  <h3>
+    <header>All Categories</header>
+  </h3>
+</div>
+<div class="container">
+  <div class="row " style="margin-top: 20px;">
+    {% for i in categories %}
+    <div class="col-md-3 mb-4 d-flex justify-content-center ">
+      <div class="card h-100" >
+        <a href="{% url 'category_detail' i.id  %}" class="a">
+          <img src="{{i.image.url}}" class="card-img-top" alt="...">
+          <div class="card-body ">
+            <h5 class="card-title">{{i.name}}</h5>
+
+          </div>
+        </a>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+
+
+{% endblock content %}

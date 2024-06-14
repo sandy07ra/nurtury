@@ -1,0 +1,81 @@
+{% extends 'Nurture/base.html'%}
+{% load static%}
+{% block content %}
+
+<style>
+    .card-body h5 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+ 
+    .card-body h3{
+        font-size: 2.3rem;
+    }
+
+    .card-body .btn {
+        /* margin-right: 10px; */
+        background-color: #09a323;
+        color: white;
+        width: 50%;
+        font-size: 1rem;
+        height: 55px;
+        text-align: center;
+    }
+
+    .desptn {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+        padding-left: 20px;
+        /* Adds padding to the left for bullets */
+    }
+    .desptn .season{
+        font-size: 1.2rem;
+        font-weight:400;
+        
+    }
+    .quantity-input-container {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .quantity-input {
+        width: 20%;
+        height: 50px;
+        text-align: center;
+        font-size: 1rem;
+        border: 1px solid #09a323;
+        border-radius: 4px;
+        padding: 5px;
+    }
+</style>
+
+<div class="container" style="margin-top: 50px;">
+    <div class="row">
+        <div class="col-md-6">
+            <img src="{{ data.product_image.url }}" class="img-fluid" alt="Product Image"
+                style="max-width: 100%; height: auto;">
+        </div>
+        <div class="col-md-6">
+            <div class="card-body">
+                <h5>{{ data.product_name }}</h5>
+                <ul class="desptn">
+                    {% for point in data.description.splitlines %}
+                    <li>{{ point }}</li>
+                    {% endfor %}
+                    <li class="season">SEASON:{{data.season}}</li>
+                </ul>
+
+                <h3>Rs {{ data.selling_price }}</h3>
+                           
+                <div class="quantity-input-container">
+                    <input type="number" id="quantity-input" class="quantity-input" value="1" min="1" max="{{data.quantity}}" placeholder="Quantity">
+                    <a href="{% url 'addtocart' data.id %}" class="btn btn-outline-success">ADD TO CART</a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

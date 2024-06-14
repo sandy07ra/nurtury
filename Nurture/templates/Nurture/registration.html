@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <!-- Custom styles -->
+    <style>
+       body {
+            background-color: #f8f9fa;
+            padding-top: 50px;
+        }
+        .form-control {
+            margin-bottom: 15px;
+        }
+        .register-form {
+            max-width: 500px; /* Adjusted max-width for wider form */
+            margin: 0 auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+        }
+        .register-form h3 {
+            text-align: center;
+            margin-bottom: 30px;
+            color:  #09a323; /* Teal color for heading */
+        }
+        .register-form button[type="submit"] {
+            background-color:  #09a323; /* Teal color */
+            color: #fff;
+            border: none;
+            padding: 12px;
+            width: 100%; /* Button width 100% of parent */
+            margin-top: 15px;
+            transition: background-color 0.3s ease;
+        }
+        .register-form button[type="submit"]:hover {
+            background-color:  #09a323; /* Darker teal on hover */
+        }
+        .register-form .or-text {
+            text-align: center;
+            margin-top: 15px;
+            margin-bottom: 10px;
+        }
+        .register-form .login-link {
+            display: block;
+            width: 100%; /* Adjusted width for login button */
+            text-align: center;
+            color: #333;
+            border: 1px solid #ccc;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .register-form .login-link:hover {
+            background-color:  #09a323; /* Light grey on hover */
+            color:  #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="register-form">
+            <h3>Please Sign In To Continue</h3>
+            <form action="" method="post">
+                {%csrf_token%}
+                {{form.as_p}}
+                <button type="submit">SIGN IN</button>
+               
+            </form>
+            <div class="or-text">Or</div>
+            <p class="text-center">Already have an account?</p>
+            <a href="{% url 'login' %}" class="login-link btn btn-outline-dark">LOG IN</a>
+
+        </div>
+
+    </div>
+    
+    <!-- Bootstrap JS and dependencies (optional) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@1.16.1/dist/umd/popper.min.js" integrity="sha384-z4LWyxitRqp+uvd8LYgj2bO9/QbuB+L0gPL9adXxZOrppfO3WJwtaHfagKRbwl0W" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+2hc9s3PbkD/EHLmAkTbY/K2vZISy8ic+1M" crossorigin="anonymous"></script>
+
+</body>
+</html>
+
+<!-- <form action="" method="post">
+    {%csrf_token%}
+    {{form.as_p}}
+    <button type="submit">REGISTER</button>
+</form> -->
